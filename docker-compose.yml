@@ -1,0 +1,25 @@
+version: "3"
+services:
+  mysqldb:
+    restart: always
+    image: mysql:latest
+    networks:
+      - bookstore-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bookstore
+    ports:
+      - "3306:3306"
+
+  bookstore:
+    restart: on-failure
+    image: bookstore-app
+    ports:
+      - "8080:8080"
+    networks:
+      - bookstore-mysql
+    depends_on:
+      - mysqldb
+
+networks:
+  bookstore-mysql:
