@@ -9,6 +9,6 @@ The tech stack used is:
 4. Maven
 
 How to run?
-	mvn clean publish
-	docker-compose up
+1. mvn clean publish
+2. docker-compose up
 
